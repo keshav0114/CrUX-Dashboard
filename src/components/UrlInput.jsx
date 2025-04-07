@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Box, TextField, Button, Typography, CircularProgress, Paper, Chip, IconButton } from '@mui/material';
+import { Box, TextField, Button, Typography, Paper, Chip } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import SearchIcon from '@mui/icons-material/Search';
 import { fetchCruxData } from '../services/cruxService';
 
 const UrlInput = ({ setResults, setLoading, setError }) => {
@@ -77,7 +78,7 @@ const UrlInput = ({ setResults, setLoading, setError }) => {
   };
 
   return (
-    <Paper elevation={3} sx={{ p: 3, mb: 4 }}>
+    <Paper elevation={3} sx={{ p: 3, mb: 4, minWidth: 650 }}>
       <Typography variant="h6" gutterBottom>
         Enter URL(s) to analyze
       </Typography>
@@ -92,7 +93,7 @@ const UrlInput = ({ setResults, setLoading, setError }) => {
           error={!!inputError}
           helperText={inputError}
           placeholder="https://example.com"
-          onKeyPress={(e) => {
+          onKeyDown={(e) => {
             if (e.key === 'Enter') handleAddUrl();
           }}
         />
@@ -131,7 +132,7 @@ const UrlInput = ({ setResults, setLoading, setError }) => {
           size="large"
           onClick={handleSearch}
           disabled={urls.length === 0 && !url}
-          startIcon={urls.length === 0 && !url ? null : null}
+          startIcon={<SearchIcon />}
         >
           Search
         </Button>

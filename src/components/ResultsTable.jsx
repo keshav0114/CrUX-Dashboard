@@ -16,7 +16,6 @@ import {
   MenuItem,
   FormControl,
   InputLabel,
-  Chip,
   TableSortLabel,
   TablePagination
 } from '@mui/material';
@@ -179,7 +178,7 @@ const ResultsTable = ({ results, loading, error }) => {
 
   return (
     <>
-      <Paper elevation={3} sx={{ p: 3, mb: 4 }}>
+      <Paper elevation={3} sx={{ p: 3, mb: 4, minWidth: 650 }}>
         <Typography variant="h6" gutterBottom>
           Filter Results
         </Typography>
@@ -235,7 +234,7 @@ const ResultsTable = ({ results, loading, error }) => {
             <Typography variant="subtitle1" gutterBottom>
               Aggregate Statistics
             </Typography>
-            <TableContainer>
+            <TableContainer sx={{ minWidth: 650 }}>
               <Table>
                 <TableHead>
                   <TableRow>
@@ -264,7 +263,7 @@ const ResultsTable = ({ results, loading, error }) => {
           </Box>
         )}
         
-        <TableContainer>
+        <TableContainer sx={{ minWidth: 650 }}>
           <Table>
             <TableHead>
               <TableRow>
@@ -298,7 +297,7 @@ const ResultsTable = ({ results, loading, error }) => {
                   </TableCell>
                   {metricNames.map(metric => (
                     <TableCell key={metric} align="right">
-                      {result.metrics?.[metric]?.toFixed(2) || '-'}
+                      {result.metrics[metric].toFixed(2)}
                     </TableCell>
                   ))}
                 </TableRow>

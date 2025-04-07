@@ -24,14 +24,28 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container maxWidth="lg" className="main-container">
-        <Box sx={{ my: 4 }}>
-          <Typography variant="h4" component="h1" gutterBottom align="center">
+      <Box sx={{ flexGrow: 1, mb: 4 }}>
+        <Box
+          component="nav"
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: theme.palette.primary.main,
+            color: "#fff",
+            padding: "10px 20px",
+          }}
+        >
+          <Typography variant="h6" component="div">
             CRUX Dashboard
           </Typography>
-          <UrlInput 
-            setResults={setResults} 
-            setLoading={setLoading} 
+        </Box>
+      </Box>
+      <Container maxWidth="lg" className="main-container">
+        <Box sx={{ my: 4 }}>
+          <UrlInput
+            setResults={setResults}
+            setLoading={setLoading}
             setError={setError}
           />
           <ResultsTable 
